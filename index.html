@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Planetary Dua Saatleri — 100+ Şehir</title>
+  <meta name="description" content="Güneş doğuş/batışına göre gezegen saatleri. Otomatik konum, şehir arama, ICS indirme ve çok dilli destek.">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icons/icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <meta name="theme-color" content="#059669">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container" id="root">
+    <header>
+      <div>
+        <h1 id="appTitle">Planetary Hours Dua Aracı</h1>
+        <div id="appSummary" class="summary">Otomatik konum, 100+ şehir, en yakın & en ideal dua saati</div>
+        <div id="iconsRow" aria-hidden="true"></div>
+      </div>
+      <div class="controls">
+        <select id="langSelect" title="Dil"></select>
+        <div style="position:relative">
+          <input id="citySearch" type="text" placeholder="Şehir ara…" autocomplete="off">
+          <div id="suggestions" class="suggestions" style="display:none"></div>
+        </div>
+        <button id="icsBtn">ICS İndir</button>
+      </div>
+    </header>
+
+    <section class="single-column">
+      <div class="panel">
+        <h3 id="bestHeader">En Yakın & En İdeal Dua Saati</h3>
+        <div id="bestBox"></div>
+        <p style="margin-top:12px"><small class="muted" id="note">Not: Gezegen saatleri, güneşin doğuşu ve batışına göre 12'şer dilime ayrılır.</small></p>
+      </div>
+
+      <div class="panel">
+        <h2 id="title"></h2>
+        <p class="summary" id="sunline"></p>
+        <div style="border:1px solid #86efac;border-radius:12px;overflow:auto">
+          <table id="hoursTable">
+            <thead><tr>
+              <th id="thIdx">#</th>
+              <th id="thStart">Başlangıç</th>
+              <th id="thEnd">Bitiş</th>
+              <th id="thPlanet">Gezegen</th>
+              <th id="thSegment">Dilim</th>
+              <th id="thPurpose">Dua Amacı</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h4 id="customCityTitle">Kendi Şehrini Ekle</h4>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px">
+          <input id="ccName" placeholder="Ad">
+          <input id="ccLat" placeholder="Lat">
+          <input id="ccLon" placeholder="Lon">
+          <input id="ccTz" placeholder="TZ örn. Europe/Istanbul">
+        </div>
+        <button id="ccAddBtn" style="margin-top:8px">Ekle</button>
+        <small class="muted" id="customCityHelp">Not: Ekledikleriniz tarayıcıda (localStorage) saklanır.</small>
+      </div>
+
+      <details class="panel">
+        <summary style="cursor:pointer" id="testsHeader">Dahili Testler</summary>
+        <ul id="testList" style="margin-top:8px"></ul>
+      </details>
+
+      <div class="panel" id="refs">
+        <h3 id="refsTitle">Referanslar</h3>
+        <div id="refsBody"></div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Planetary Dua Saatleri • <span id="footerLine">Hesaplama: yerel güneş doğuş/batış + Chaldean sırası | Eğitsel/ruhsal kullanım içindir.</span>
+    </footer>
+  </div>
+
+  <script src="/app.data.js"></script>
+  <script type="module" src="/app.v32.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(()=>{});
+      });
+    }
+  </script>
+</body>
+</html>
