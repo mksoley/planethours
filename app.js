@@ -19,7 +19,7 @@ function zonedWeekdayIndex(date,tz){ const wd=new Intl.DateTimeFormat("en-GB",{t
 function haversine(lat1,lon1,lat2,lon2){ const R=6371, dLat=rad*(lat2-lat1), dLon=rad*(lon2-lon1); const a=Math.sin(dLat/2)**2 + Math.cos(rad*lat1)*Math.cos(rad*lat2)*Math.sin(dLon/2)**2; return 2*Math.asin(Math.min(1,Math.max(-1,Math.sqrt(a)))); }
 const I18N={
   tr:{ appTitle:"Gezegen Saatleri Dua Aracı", appSummary:"Otomatik konum, 100+ şehir, en yakın & en ideal dua saati",
-      thIdx:"#", thStart:"Başlangıç", thEnd:"Bitiş", thPlanet:"Gezegen", thSegment:"Dilim", thPurpose:"Amaç",
+      thIdx:"#", thStart:"Başlangıç", thEnd:"Bitiş", thPlanet:"Gezegen", thSegment:"Dilim", thPurpose:"Dua Amacı",
       today:"Bugün", sunrise:"Güneş doğuşu", solarnoon:"Güneş öğle", sunset:"Gün batımı",
       segmentDay:"Gündüz", segmentNight:"Gece", bestHeader:"En Yakın & En İdeal Dua Saati",
       testsHeader:"Dahili Testler", note:"Not: Gezegen saatleri, güneşin doğuşu ve batışına göre 12’şer dilime ayrılır.",
