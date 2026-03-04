@@ -89,9 +89,31 @@
     </footer>
   </div>
 
+  <!-- Dua Amacı Detay Modalı -->
+  <div id="purposeModal" class="modal-overlay" style="display:none" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose" aria-label="Kapat">✕</button>
+      <div class="modal-planet-icon" id="modalPlanetIcon"></div>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <div class="modal-summary" id="modalSummary"></div>
+      <div class="modal-divider"></div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
   <script src="/app.data.js"></script>
+  <script src="/app.purposes.js"></script>
   <script type="module" src="/app.v32.js"></script>
   <script>
+    document.getElementById('purposeModal').addEventListener('click', function(e){
+      if(e.target===this) this.style.display='none';
+    });
+    document.getElementById('modalClose').addEventListener('click', function(){
+      document.getElementById('purposeModal').style.display='none';
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape') document.getElementById('purposeModal').style.display='none';
+    });
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js').catch(()=>{});

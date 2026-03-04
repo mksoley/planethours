@@ -45,6 +45,33 @@ function currentLang(){ const sel=document.getElementById("langSelect"); const c
 function currentLocaleCode(){ const map={tr:"tr-TR",en:"en-US"}; const lang=currentLang(); return map[lang]||"en-US"; }
 function t(key){ const lang=currentLang(); return (I18N[lang] && I18N[lang][key]) || I18N.en[key] || key; }
 function purposeText(planet){ return currentLang()==="tr" ? PURPOSES_TR[planet] : PURPOSES_EN[planet]; }
+const PLANET_ICONS={Sun:"☀️",Moon:"🌙",Mars:"🔴",Mercury:"🟡",Jupiter:"🟠",Venus:"💚",Saturn:"⚫"};
+function showPurposeModal(planet){
+  const lang=currentLang();
+  const details=(lang==="tr"?window.PURPOSES_DETAIL_TR:window.PURPOSES_DETAIL_EN)||{};
+  const detail=details[planet]||purposeText(planet);
+  const planetName=(lang==="tr"?PLANET_TR[planet]:planet)||planet;
+  const summary=purposeText(planet);
+  const icon=PLANET_ICONS[planet]||"🌟";
+  document.getElementById("modalPlanetIcon").textContent=icon;
+  document.getElementById("modalTitle").textContent=planetName;
+  document.getElementById("modalSummary").textContent=summary;
+  const bodyEl=document.getElementById("modalBody");
+  bodyEl.innerHTML="";
+  detail.split("\n").forEach(line=>{
+    if(!line.trim()){bodyEl.appendChild(document.createElement("br"));return;}
+    const p=document.createElement("p");
+    if(line.startsWith("•")){p.className="modal-bullet";}
+    else if(line.startsWith("💡")||line.startsWith("🌟")){p.className="modal-section-title";}
+    else if(line.includes("SAATİ")||line.includes("HOUR")){p.className="modal-header-line";}
+    else{p.className="modal-text";}
+    p.textContent=line;
+    bodyEl.appendChild(p);
+  });
+  const modal=document.getElementById("purposeModal");
+  modal.style.display="flex";
+  modal.querySelector(".modal-box").scrollTop=0;
+}
 let CITIES=[]; let currentCityIndex=0;
 async function loadCities(){ 
   let core = await fetch("cities-core.json").then(r=>r.json()).catch(()=>[]); 
@@ -176,7 +203,7 @@ function render(){
     const tdEnd=document.createElement("td"); tdEnd.textContent=formatInTZ(h.end, city.tz, {hour:"2-digit",minute:"2-digit"});
     const tdPlanet=document.createElement("td"); tdPlanet.textContent=`${PLANET_TR[h.planet]||h.planet} (${h.planet})`; const pill=document.createElement("span"); pill.className="pill"; pill.textContent=isDayRuler?"★":""; tdPlanet.appendChild(pill);
     const tdSeg=document.createElement("td"); tdSeg.textContent=t(h.segment==="day"?"segmentDay":"segmentNight");
-    const tdPur=document.createElement("td"); tdPur.textContent=purposeText(h.planet);
+    const tdPur=document.createElement("td"); tdPur.textContent=purposeText(h.planet); tdPur.className="td-purpose"; tdPur.title=currentLang()==="tr"?"Detaylar için tıklayın":"Click for details"; tdPur.style.cursor="pointer"; tdPur.addEventListener("click",()=>showPurposeModal(h.planet));
     tr.append(tdIdx, tdStart, tdEnd, tdPlanet, tdSeg, tdPur);
     tbody.append(tr);
   });
