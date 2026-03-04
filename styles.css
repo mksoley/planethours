@@ -182,13 +182,7 @@ table{
 }
 #hoursTable th:nth-child(1),
 #hoursTable td:nth-child(1){
-  width:50px;
-  padding:8px 4px;
-}
-#hoursTable th:nth-child(2),
-#hoursTable td:nth-child(2){
-  width:50px;
-  padding:8px 4px;
+  width:60px;
 }
 th,td{
   padding:14px 16px;
