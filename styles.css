@@ -75,13 +75,26 @@ header::before{
   0% { transform:translateX(-100%) translateY(-100%) rotate(45deg); }
   100% { transform:translateX(100%) translateY(100%) rotate(45deg); }
 }
+.app-logo{
+  height:42px;
+  width:auto;
+  flex-shrink:0;
+  filter:drop-shadow(0 0 8px rgba(16,185,129,0.4));
+  animation:logoGlow 3s ease-in-out infinite;
+}
+@keyframes logoGlow{
+  0%,100%{filter:drop-shadow(0 0 8px rgba(16,185,129,0.4));}
+  50%{filter:drop-shadow(0 0 14px rgba(16,185,129,0.6));}
+}
 h1{
-  font-size:32px;margin:0 0 8px 0;
-  background:linear-gradient(135deg, var(--green-light) 0%, var(--accent) 50%, var(--orange) 100%);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
+  font-size:32px;
   font-weight:800;
+  margin:0 0 8px;
+  background:linear-gradient(135deg, var(--green-light) 0%, var(--orange) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 30px rgba(16,185,129,0.3);
   letter-spacing:-0.5px;
   position:relative;
   z-index:1;
