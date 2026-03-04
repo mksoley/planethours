@@ -200,25 +200,10 @@ thead th{
   text-shadow:0 0 10px rgba(16,185,129,0.5);
 }
 tbody tr{
-  transition:all 0.3s ease;
-  position:relative;
-}
-tbody tr::before{
-  content:'';
-  position:absolute;
-  left:0;
-  top:0;
-  height:100%;
-  width:3px;
-  background:linear-gradient(180deg, var(--green) 0%, var(--orange) 100%);
-  opacity:0;
-  transition:opacity 0.3s;
+  transition:background 0.3s ease;
 }
 tbody tr:hover{
   background:linear-gradient(90deg, rgba(16,185,129,0.1) 0%, rgba(249,115,22,0.05) 100%);
-}
-tbody tr:hover::before{
-  opacity:1;
 }
 .badge{
   display:block;
@@ -262,13 +247,11 @@ tbody tr:hover::before{
 .highlight{
   background:linear-gradient(90deg, rgba(251,191,36,0.2) 0%, rgba(249,115,22,0.2) 100%) !important;
   box-shadow:inset 0 0 0 2px rgba(249,115,22,0.6), 0 0 20px rgba(249,115,22,0.3);
-  position:relative;
 }
 .current{
   background:linear-gradient(90deg, rgba(249,115,22,0.3) 0%, rgba(251,191,36,0.25) 50%, rgba(249,115,22,0.3) 100%) !important;
   box-shadow:inset 0 0 0 3px rgba(249,115,22,0.8), 0 0 30px var(--current-glow), 0 0 60px rgba(249,115,22,0.2);
   font-weight:800;
-  position:relative;
   animation:currentGlow 1.5s ease-in-out infinite;
   background-size:200% 100%;
 }
@@ -281,19 +264,6 @@ tbody tr:hover::before{
     box-shadow:inset 0 0 0 4px rgba(249,115,22,1), 0 0 40px rgba(249,115,22,0.8), 0 0 80px rgba(249,115,22,0.4);
     background-position:100% 50%;
   }
-}
-.current::after{
-  content:'▶';
-  position:absolute;
-  left:8px;
-  color:var(--orange);
-  font-size:14px;
-  filter:drop-shadow(0 0 5px rgba(249,115,22,0.8));
-  animation:pulse-arrow 1s ease-in-out infinite;
-}
-@keyframes pulse-arrow{
-  0%, 100% { opacity:1; transform:translateX(0); }
-  50% { opacity:0.6; transform:translateX(3px); }
 }
 footer{
   color:var(--text-muted);
