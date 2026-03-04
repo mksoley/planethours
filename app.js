@@ -176,7 +176,13 @@ function render(){
     const tdEnd=document.createElement("td"); tdEnd.textContent=formatInTZ(h.end, city.tz, {hour:"2-digit",minute:"2-digit"});
     const tdPlanet=document.createElement("td"); tdPlanet.textContent=`${PLANET_TR[h.planet]||h.planet} (${h.planet})`; const pill=document.createElement("span"); pill.className="pill"; pill.textContent=isDayRuler?"★":""; tdPlanet.appendChild(pill);
     const tdSeg=document.createElement("td"); tdSeg.textContent=t(h.segment==="day"?"segmentDay":"segmentNight");
-    const tdPur=document.createElement("td"); tdPur.textContent=purposeText(h.planet);
+    const purposeTxt=purposeText(h.planet);
+    const tdPur=document.createElement("td");
+    tdPur.className="purpose-cell";
+    tdPur.textContent=purposeTxt;
+    tdPur.title="Dua ve ritüel önerileri için tıklayın";
+    const qp=new URLSearchParams({planet:h.planet,planetTr:PLANET_TR[h.planet]||h.planet,start:tdStart.textContent,end:tdEnd.textContent,purpose:purposeTxt,segment:h.segment,date:todayStr});
+    tdPur.addEventListener("click",()=>window.open("/prayer-guide.html?"+qp.toString(),"_blank"));
     tr.append(tdIdx, tdStart, tdEnd, tdPlanet, tdSeg, tdPur);
     tbody.append(tr);
   });

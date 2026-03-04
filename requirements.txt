@@ -1,0 +1,2 @@
+# Harici bağımlılık yok — server.py standart kütüphane kullanır
+# Python 3.8+ gerektirir
