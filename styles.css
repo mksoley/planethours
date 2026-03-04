@@ -176,34 +176,19 @@ table{
   border-spacing:0;
   table-layout:fixed;
 }
+#hoursTable th,
+#hoursTable td{
+  width:auto;
+}
 #hoursTable th:nth-child(1),
 #hoursTable td:nth-child(1){
-  width:60px;
-  padding:8px;
+  width:50px;
+  padding:8px 4px;
 }
 #hoursTable th:nth-child(2),
 #hoursTable td:nth-child(2){
-  width:60px;
-}
-#hoursTable th:nth-child(3),
-#hoursTable td:nth-child(3){
-  width:13%;
-}
-#hoursTable th:nth-child(4),
-#hoursTable td:nth-child(4){
-  width:13%;
-}
-#hoursTable th:nth-child(5),
-#hoursTable td:nth-child(5){
-  width:22%;
-}
-#hoursTable th:nth-child(6),
-#hoursTable td:nth-child(6){
-  width:13%;
-}
-#hoursTable th:nth-child(7),
-#hoursTable td:nth-child(7){
-  width:calc(39% - 120px);
+  width:50px;
+  padding:8px 4px;
 }
 th,td{
   padding:14px 16px;
