@@ -174,7 +174,7 @@ function render(){
     const tdIdx=document.createElement("td"); tdIdx.textContent=idx+1;
     const tdStart=document.createElement("td"); tdStart.textContent=formatInTZ(h.start, city.tz, {hour:"2-digit",minute:"2-digit"});
     const tdEnd=document.createElement("td"); tdEnd.textContent=formatInTZ(h.end, city.tz, {hour:"2-digit",minute:"2-digit"});
-    const tdPlanet=document.createElement("td"); tdPlanet.textContent=`${PLANET_TR[h.planet]||h.planet} (${h.planet})`; const pill=document.createElement("span"); pill.className="pill"; pill.textContent=isDayRuler?"★":""; tdPlanet.appendChild(pill);
+    const tdPlanet=document.createElement("td"); tdPlanet.textContent=`${PLANET_TR[h.planet]||h.planet} (${h.planet})`;
     const tdSeg=document.createElement("td"); tdSeg.textContent=t(h.segment==="day"?"segmentDay":"segmentNight");
     const tdPur=document.createElement("td"); tdPur.textContent=purposeText(h.planet);
     tr.append(tdIdx, tdStart, tdEnd, tdPlanet, tdSeg, tdPur);
