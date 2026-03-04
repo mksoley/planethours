@@ -195,14 +195,6 @@ function render(){
 function bindCustomCities(){ document.getElementById("ccAddBtn").addEventListener("click", ()=>{ const name=document.getElementById("ccName").value.trim(); const lat=parseFloat(document.getElementById("ccLat").value); const lon=parseFloat(document.getElementById("ccLon").value); const tz=document.getElementById("ccTz").value.trim(); if(!name || isNaN(lat) || isNaN(lon) || !tz) return alert("Eksik ya da hatalı değerler."); const list=JSON.parse(localStorage.getItem("customCities")||"[]"); list.push({name,lat,lon,tz}); localStorage.setItem("customCities", JSON.stringify(list)); alert("Eklendi. Arama kutusundan şehrinizi bulabilirsiniz."); }); }
 async function main(){
   document.getElementById("year").textContent=new Date().getFullYear();
-  const ICONS=[
-    `<svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M14 2a9 9 0 100 20 9 9 0 010-18z" stroke="#065f46" stroke-width="2"/><path d="M22 12a10 10 0 01-10 10 8 8 0 01-1-15A8 8 0 0022 12z" fill="#16a34a"/></svg>`,
-    `<svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M5 7h14" stroke="#065f46" stroke-width="2"/></svg>`,
-    `<svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 10-7 8-7-8 7-10z" stroke="#065f46" stroke-width="2"/><path d="M5 10h14M7 13h10" stroke="#16a34a" stroke-width="2"/></svg>`,
-    `<svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M6 12c0-3 3-5 6-5 2 0 4 1 5 3" stroke="#065f46" stroke-width="2"/><path d="M12 12c1 0 2 .5 2 1.5S13 15 12 15a2 2 0 110-4" stroke="#16a34a" stroke-width="2"/></svg>`,
-    `<svg class="icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="#065f46" stroke-width="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M5 19l3-3M16 8l3-3" stroke="#16a34a" stroke-width="2"/></svg>`
-  ];
-  const row=document.getElementById("iconsRow"); row.innerHTML=""; for(const svg of ICONS){ const span=document.createElement("span"); span.innerHTML=svg; row.append(span.firstChild); }
   const sel=document.getElementById("langSelect"); sel.innerHTML=""; for(const code of Object.keys(I18N)){ const opt=document.createElement("option"); opt.value=code; opt.textContent=code.toUpperCase(); sel.append(opt); } sel.value=currentLang(); sel.addEventListener("change", ()=>{ applyI18n(); render(); });
   applyI18n();
   await loadCities();
