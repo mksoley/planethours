@@ -1,0 +1,38 @@
+:root{
+  --bg:#ecfdf5; --panel:#ffffff; --text:#022c22; --muted:#0f766e; --accent:#059669; --accent-2:#16a34a;
+  --soft:#d1fae5; --gold:#f59e0b; --day:#dcfce7; --night:#e0f2fe; --day-ruler:#fef3c7; --ruler-border:#f59e0b;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,"Apple Color Emoji","Segoe UI Emoji"}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+header{display:flex;gap:12px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap}
+h1{font-size:28px;margin:0 0 4px 0}
+.panel{background:var(--panel);border-radius:18px;box-shadow:0 4px 20px rgba(2,44,34,0.08);padding:20px}
+.single-column{display:flex;flex-direction:column;gap:16px;margin-top:16px}
+select,input,button{padding:10px 12px;border-radius:14px;border:1px solid #99f6e4;background:#fff}
+button{cursor:pointer}
+table{width:100%;border-collapse:collapse}
+th,td{padding:10px;border-top:1px solid #bbf7d0;font-size:14px;vertical-align:top}
+thead{background:#ecfeff}
+.badge{display:block;border:2px dashed var(--accent);background:#f0fdf4;color:#064e3b;font-weight:800;border-radius:14px;padding:12px 14px}
+.highlight{background:var(--day-ruler); box-shadow:inset 0 0 0 2px var(--ruler-border)}
+.current{background:#bfdbfe !important; box-shadow:inset 0 0 0 3px #3b82f6; font-weight:600}
+footer{color:#0f766e;text-align:center;font-size:12px;padding:24px 0}
+.summary{color:var(--muted);font-size:14px;margin-bottom:12px}
+small.muted{color:#0f766e}
+.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+#iconsRow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;opacity:.9}
+.icon{width:28px;height:28px}
+.pill{display:inline-block;padding:2px 8px;border-radius:999px;background:#dcfce7;border:1px solid #86efac;color:#166534;font-size:12px;margin-left:6px}
+.row-day{background:var(--day)}
+.row-night{background:var(--night)}
+#refs{margin-top:24px}
+#refs h3{margin:0 0 12px 0}
+.ref-item{margin:6px 0}
+#citySearch{min-width:280px}
+.suggestions{position:absolute;z-index:10;background:#fff;border:1px solid #86efac;border-radius:12px;max-height:220px;overflow:auto;box-shadow:0 8px 20px rgba(0,0,0,0.08)}
+.suggestions div{padding:8px 10px;cursor:pointer}
+.suggestions div:hover{background:#ecfdf5}
+.rtl{direction:rtl}
+@media (max-width: 950px){ .grid{grid-template-columns:1fr} }

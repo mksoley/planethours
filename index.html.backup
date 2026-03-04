@@ -30,15 +30,15 @@
     </header>
 
     <section class="single-column">
-      <div class="panel" style="background:linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(99,102,241,0.15) 100%);border:2px solid rgba(139,92,246,0.3);">
-        <h3 id="bestHeader">✨ En Yakın & En İdeal Dua Saati</h3>
+      <div class="panel">
+        <h3 id="bestHeader">En Yakın & En İdeal Dua Saati</h3>
         <div id="bestBox"></div>
-        <p style="margin-top:16px"><small class="muted" id="note">💫 Not: Gezegen saatleri, güneşin doğuşu ve batışına göre 12'şer dilime ayrılır.</small></p>
+        <p style="margin-top:12px"><small class="muted" id="note">Not: Gezegen saatleri, güneşin doğuşu ve batışına göre 12'şer dilime ayrılır.</small></p>
       </div>
 
       <div class="panel">
-        <h2 id="title" style="display:flex;align-items:center;gap:12px;">🌍 <span style="flex:1;"></span></h2>
-        <p class="summary" id="sunline" style="display:flex;align-items:center;gap:8px;">☀️ <span style="flex:1;"></span></p>
+        <h2 id="title"></h2>
+        <p class="summary" id="sunline"></p>
         <div style="border:1px solid #86efac;border-radius:12px;overflow:auto">
           <table id="hoursTable">
             <thead><tr>
@@ -55,7 +55,7 @@
       </div>
 
       <div class="panel">
-        <h4 id="customCityTitle">📍 Kendi Şehrini Ekle</h4>
+        <h4 id="customCityTitle">Kendi Şehrini Ekle</h4>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px">
           <input id="ccName" placeholder="Ad">
           <input id="ccLat" placeholder="Lat">
@@ -66,13 +66,13 @@
         <small class="muted" id="customCityHelp">Not: Ekledikleriniz tarayıcıda saklanır.</small>
       </div>
 
-      <details class="panel" style="cursor:pointer;">
-        <summary style="cursor:pointer;font-weight:700;font-size:16px;" id="testsHeader">🔬 Dahili Testler</summary>
+      <details class="panel">
+        <summary style="cursor:pointer" id="testsHeader">Dahili Testler</summary>
         <ul id="testList" style="margin-top:8px"></ul>
       </details>
 
       <div class="panel" id="refs">
-        <h3 id="refsTitle">📚 Referanslar</h3>
+        <h3 id="refsTitle">Referanslar</h3>
         <div id="refsBody"></div>
       </div>
     </section>
