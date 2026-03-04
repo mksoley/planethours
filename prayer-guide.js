@@ -109,7 +109,7 @@ async function getPrayerAdvice() {
   resultsPanel.scrollIntoView({ behavior: "smooth", block: "start" });
 
   try {
-    const response = await fetch("/api/prayer", {
+    const response = await fetch("/.netlify/functions/prayer", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -129,7 +129,10 @@ async function getPrayerAdvice() {
       throw new Error(err.error || `Sunucu hatası: ${response.status}`);
     }
 
-    /* ── SSE streaming ── */
+    const data = await response.json();
+    if (data.error) throw new Error(data.error);
+
+    /* ── Render results ── */
     resultsPanel.innerHTML = `
       <div class="results-header">
         <h3>✨ Manevi Danışman Önerileri</h3>
@@ -140,49 +143,12 @@ async function getPrayerAdvice() {
           <span class="pill">${hourData.date}</span>
         </div>
       </div>
-      <div class="results-content" id="resultsContent"><span class="cursor-blink"></span></div>`;
+      <div class="results-content" id="resultsContent"></div>`;
 
     const contentEl = document.getElementById("resultsContent");
-    const reader    = response.body.getReader();
-    const decoder   = new TextDecoder();
-    let buffer      = "";
-    let fullText    = "";
+    const fullText = data.text || "";
 
-    outer: while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-
-      buffer += decoder.decode(value, { stream: true });
-      const lines = buffer.split("\n");
-      buffer = lines.pop();          // keep incomplete last line
-
-      for (const line of lines) {
-        if (!line.startsWith("data: ")) continue;
-        const data = line.slice(6).trim();
-        if (data === "[DONE]") break outer;
-        try {
-          const chunk = JSON.parse(data);
-          if (chunk.error) throw new Error(chunk.error);
-          if (chunk.text) {
-            fullText += chunk.text;
-            const rendered = (typeof marked !== "undefined")
-              ? marked.parse(fullText)
-              : fullText.replace(/\n/g, "<br>");
-            contentEl.innerHTML = rendered + '<span class="cursor-blink"></span>';
-            // auto-scroll gently while streaming
-            if (resultsPanel.getBoundingClientRect().bottom < window.innerHeight + 200) {
-              window.scrollBy({ top: 40, behavior: "smooth" });
-            }
-          }
-        } catch (e) {
-          if (e.message && e.message !== "Unexpected end of JSON input") {
-            throw e;
-          }
-        }
-      }
-    }
-
-    // Final render — remove cursor
+    // Final render
     if (fullText) {
       contentEl.innerHTML = (typeof marked !== "undefined")
         ? marked.parse(fullText)
