@@ -1,0 +1,8 @@
+{
+  "name": "planetary-hours-prayer",
+  "version": "1.0.0",
+  "description": "Planetary Hours Prayer Guide with OpenAI integration",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {}
+}

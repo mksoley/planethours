@@ -169,8 +169,14 @@ async function getPrayerAdvice() {
     resultsPanel.innerHTML = `
       <div class="error-state">
         <h3>❌ Hata Oluştu</h3>
-        <p>${err.message}</p>
-        <small>Lütfen sunucunun çalıştığından ve .env dosyasında OPENAI_API_KEY'in ayarlı olduğundan emin olun.</small>
+        <p><strong>Hata:</strong> ${err.message}</p>
+        <p><strong>Endpoint:</strong> <code>/.netlify/functions/prayer</code></p>
+        <small style="display:block;margin-top:12px;line-height:1.6;">
+          <strong>Olası Nedenler:</strong><br>
+          • Netlify Functions henüz deploy olmamış olabilir (Netlify dashboard'dan kontrol edin)<br>
+          • Environment variable OPENAI_API_KEY eksik olabilir (Site Settings → Environment variables)<br>
+          • Deploy işlemi devam ediyor olabilir (birkaç dakika bekleyin)
+        </small>
         <div style="margin-top:20px;">
           <button onclick="getPrayerAdvice()">🔄 Tekrar Dene</button>
         </div>
