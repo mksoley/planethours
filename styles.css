@@ -402,19 +402,6 @@ h4{font-size:18px;}
 #citySearch{
   min-width:280px;
 }
-.purpose-cell{
-  cursor:pointer;
-  color:var(--green-light);
-  text-decoration:underline;
-  text-underline-offset:4px;
-  transition:all 0.25s ease;
-  text-align:left;
-}
-.purpose-cell:hover{
-  color:var(--orange-light);
-  text-shadow:0 0 12px rgba(249,115,22,0.7);
-  text-decoration-color:var(--orange);
-}
 .suggestions{
   position:absolute;
   z-index:100;
