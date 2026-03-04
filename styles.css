@@ -172,33 +172,9 @@ button:active{
 }
 table{
   width:100%;
-  border-collapse:separate;
+  border-collapse:collapse;
   border-spacing:0;
-  table-layout:auto;
-}
-#hoursTable th:nth-child(1),
-#hoursTable td:nth-child(1){
-  width:5%;
-}
-#hoursTable th:nth-child(2),
-#hoursTable td:nth-child(2){
-  width:12%;
-}
-#hoursTable th:nth-child(3),
-#hoursTable td:nth-child(3){
-  width:12%;
-}
-#hoursTable th:nth-child(4),
-#hoursTable td:nth-child(4){
-  width:22%;
-}
-#hoursTable th:nth-child(5),
-#hoursTable td:nth-child(5){
-  width:12%;
-}
-#hoursTable th:nth-child(6),
-#hoursTable td:nth-child(6){
-  width:37%;
+  table-layout:fixed;
 }
 th,td{
   padding:14px 16px;
@@ -240,7 +216,6 @@ tbody tr::before{
 }
 tbody tr:hover{
   background:linear-gradient(90deg, rgba(16,185,129,0.1) 0%, rgba(249,115,22,0.05) 100%);
-  transform:translateX(5px) scale(1.01);
 }
 tbody tr:hover::before{
   opacity:1;
