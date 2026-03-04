@@ -174,15 +174,31 @@ table{
   width:100%;
   border-collapse:separate;
   border-spacing:0;
-  table-layout:fixed;
-}
-#hoursTable th,
-#hoursTable td{
-  width:auto;
+  table-layout:auto;
 }
 #hoursTable th:nth-child(1),
 #hoursTable td:nth-child(1){
-  width:60px;
+  width:5%;
+}
+#hoursTable th:nth-child(2),
+#hoursTable td:nth-child(2){
+  width:12%;
+}
+#hoursTable th:nth-child(3),
+#hoursTable td:nth-child(3){
+  width:12%;
+}
+#hoursTable th:nth-child(4),
+#hoursTable td:nth-child(4){
+  width:22%;
+}
+#hoursTable th:nth-child(5),
+#hoursTable td:nth-child(5){
+  width:12%;
+}
+#hoursTable th:nth-child(6),
+#hoursTable td:nth-child(6){
+  width:37%;
 }
 th,td{
   padding:14px 16px;
