@@ -396,10 +396,66 @@ h4{font-size:18px;}
   .controls > *{width:100%;}
 }
 
+/* ── Dua Amacı İpucu Çubuğu ── */
+.purpose-hint-bar{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:linear-gradient(90deg, rgba(16,185,129,0.12) 0%, rgba(99,102,241,0.1) 100%);
+  border:1px solid rgba(16,185,129,0.3);
+  border-radius:10px;
+  padding:10px 14px;
+  margin-bottom:12px;
+  font-size:13px;
+  color:rgba(255,255,255,0.85);
+  line-height:1.5;
+}
+.purpose-hint-icon{
+  font-size:20px;
+  flex-shrink:0;
+}
+#purposeHintText strong{
+  color:var(--green-light);
+  font-weight:700;
+}
+.purpose-hint-badge{
+  flex-shrink:0;
+  background:linear-gradient(135deg, rgba(16,185,129,0.3), rgba(249,115,22,0.25));
+  border:1px solid rgba(16,185,129,0.5);
+  border-radius:20px;
+  padding:4px 12px;
+  font-size:12px;
+  font-weight:700;
+  color:var(--green-light);
+  white-space:nowrap;
+  animation:hintPulse 2.5s ease-in-out infinite;
+}
+@keyframes hintPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,0.0);}
+  50%{box-shadow:0 0 0 4px rgba(16,185,129,0.2);}
+}
+
 /* ── Dua Amacı Detay Modalı ── */
+.td-purpose{
+  position:relative;
+  cursor:pointer;
+  transition:background 0.2s;
+}
+.td-purpose::after{
+  content:"ℹ";
+  display:inline-block;
+  margin-left:5px;
+  font-size:11px;
+  color:rgba(16,185,129,0.6);
+  vertical-align:middle;
+  transition:color 0.2s;
+}
 .td-purpose:hover{
-  background:rgba(16,185,129,0.15);
-  text-decoration:underline dotted rgba(16,185,129,0.8);
+  background:rgba(16,185,129,0.15) !important;
+  color:var(--green-light);
+}
+.td-purpose:hover::after{
+  color:var(--green-light);
 }
 .modal-overlay{
   position:fixed;
